@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 "Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'kien/ctrlp.vim'
 "To autocomplete snippets
@@ -26,7 +26,8 @@ Plugin 'vim-scripts/nginx.vim'
 "Bundle 'activebridge/rails-snippets'
 "Plugin 'vim-airline/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'kana/vim-textobj-user'
      
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
