@@ -1,3 +1,13 @@
+
+let mapleader = ","
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
+
 set nocompatible              " be iMproved, required
 filetype plugin indent on    " Enable filetype-specific indenting
 " set the runtime path to include Vundle and initialize
@@ -28,6 +38,10 @@ Plugin 'vim-scripts/nginx.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'kana/vim-textobj-user'
+Plugin 'vim-scripts/dbext.vim'
+Plugin 'shmup/vim-sql-syntax'
+Plugin 'tpope/vim-surround'
+
      
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,7 +81,7 @@ set textwidth=80
 
 " Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp\|bin$',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|spec\|log\|tmp\|bin$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
@@ -84,16 +98,24 @@ set grepformat=%f:%l:%c:%m
 
 set foldmethod=indent
 set foldnestmax=2 "dont like deep indentation
+set nofoldenable    " disable folding
 
 
-let mapleader = ";"
-nmap <leader>nt :NERDTreeToggle<cr>
+
+nmap <leader>t :NERDTreeToggle<cr>
+nmap <leader>nt :NERDTreeFind<cr>
 
 
 "include tags until root directory
 set tags=./tags;/
-"ctags -R --exclude=log --exclude=node_modules --exclude=.git --exclude=tmp
-"--exclude=bin
+"ctags -R --exclude=log --exclude=node_modules --exclude=.git --exclude=tmp --exclude=bin
 
 
 runtime macros/matchit.vim "to match do/end by pressing %
+
+
+" Database connection used by dbext.vim
+let g:dbext_default_profile_PG = 'type=PGSQL:user=postgres:passwd=postgres:dbname=api_jombay_staging'
+let g:dbext_default_profile = 'PG'
+nmap <leader>se :DBExecSQLUnderCursor<cr>
+
